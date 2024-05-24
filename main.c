@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 18:31:27 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:37:15 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,23 @@ int	main(int argc, char **argv, char **envp)
 			return (0);
 		else
 		{
-			if (check_quotes(line) == 0)
+			if (check_quotes(line) == 0 && redirection_correct(line) == 0)
 			{
 				shell_setup(&shell, line);
 				execute(&shell);
 				clean_nodes(&(shell.s_cmd));
 				clean_path(&shell);
 			}
-			else
-				printf("quotes Error\n");
+			else if (check_quotes(line) == 1)
+			{
+				shell.exit_code = 1;
+				printf("Quotes error!\n");
+			}
+			else if (redirection_correct(line) == 1)
+			{
+				shell.exit_code = 258;
+				printf("minishell: syntax error near unexpected token\n");
+			}
 			add_history(line);
 			free(line);
 			// printf("****** checking env update ****");
