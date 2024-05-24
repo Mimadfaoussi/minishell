@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 19:02:40 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:40:37 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	set_hd_expanded(t_token **tokens)
 	{
 		if (index->type == HEREDOC)
 		{
-			if (include_quotes(index->next->content) == 1)
-				index->hd_expanded = 1;
+			if (index->next)
+				if (include_quotes(index->next->content) == 1)
+					index->hd_expanded = 1;
 		}
 		index = index->next;
 	}

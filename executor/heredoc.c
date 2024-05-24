@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/23 22:19:17 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:39:07 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	heredoc_loop(t_token	*files, int *fd, t_shell *shell)
 			if (files->hd_expanded == 0)
 			{
 				expanded = expand(line, shell);
-				write(*fd, expanded, ft_strlen(expanded));
+				if (expanded)
+					write(*fd, expanded, ft_strlen(expanded));
 				free(expanded);
 			}
 			else

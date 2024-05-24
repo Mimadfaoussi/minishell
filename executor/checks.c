@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:18:55 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 13:36:27 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:38:23 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	path_check(t_shell *shell, char *full_path, char *cmd)
 		ft_putstr_fd(cmd, 2);
 		ft_putstr_fd(": command not found", 2);
 		ft_putstr_fd("\n", 2);
-		exit(127);
 		shell->exit_code = 127;
+		exit(127);
 	}
 }
 
@@ -34,8 +34,8 @@ void	exec_check(t_shell *shell, char *path, char **cmd, char **envp)
 		ft_putstr_fd(cmd[0], 2);
 		ft_putstr_fd(": command not found", 2);
 		ft_putstr_fd("\n", 2);
-		exit(126);
 		shell->exit_code = 126;
+		exit(126);
 	}
 }
 

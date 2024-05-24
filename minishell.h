@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 14:08:12 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:37:33 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # include "expander/expand.h"
 
 int						check_quotes(char *input);
-int						check_single_quotes(char *input);
-int						check_double_quotes(char *input);
+// int						check_single_quotes(char *input);
+// int						check_double_quotes(char *input);
 void					print_tokens(t_token *lst);
 
 #endif

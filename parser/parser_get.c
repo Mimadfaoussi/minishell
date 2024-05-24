@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:48:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:05:53 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:48:42 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	get_list_length(t_token *cmd)
 	return (size);
 }
 /**
- * get_cmd each time we encounter a command 
- * we take it into our cmd list 
- * list , so we re separating commands from files 
+ * get_cmd each time we encounter a command
+ * we take it into our cmd list
+ * list , so we re separating commands from files
  * of course the node will be moved from index to cmd
 */
 
@@ -52,9 +52,9 @@ void	get_cmd(t_token **index, t_token **cmd)
 	token_add_back(cmd, word);
 }
 /**
- * get_file each time we encounter a redirection 
+ * get_file each time we encounter a redirection
  * we take it and the token after it into our files
- * list , so we re separating commands from files 
+ * list , so we re separating commands from files
  * of course the node will be moved from index to files
 */
 
@@ -64,6 +64,12 @@ void	get_file(t_token **index, t_token **files)
 	t_token	*next_is_file;
 
 	token = *index;
+	if (!token->next)
+	{
+		ft_putstr_fd("minishell: syntax error near unexpected token\n", 2);
+		// shell->exit_code = 258;
+		exit(258);
+	}
 	next_is_file = token->next;
 	*index = (*index)->next;
 	(*index)->prev = NULL;

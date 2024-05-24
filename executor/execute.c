@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/23 22:14:38 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:46:42 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 	char	*full_path;
 
 	default_child_signals();
+	// if (!shell->tokens->next)
+	// {
+	// 	ft_putstr_fd("minishell: syntax error near unexpected token\n", 2);
+	// 	// shell->exit_code = 258;
+	// 	exit(258);
+	// }
 	if (index->cmd[0])
 	{
 		full_path = check_cmd_path(index->cmd[0], shell->path);
